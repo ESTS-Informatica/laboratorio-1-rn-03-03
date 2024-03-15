@@ -11,11 +11,13 @@ public class WordGuessingGame
     private String hiddenWord;
     private String guessedWord;
     private int numberOfTries;
+    private InputReader reader;
 
-    public WordGuessingGame() {
-        this.hiddenWord = "abc";
-        this.guessedWord = "___";
+    public WordGuessingGame(String hiddenWord) {
+        this.hiddenWord = hiddenWord;
+        this.guessedWord = "";
         this.numberOfTries = 0;
+        this.reader = new InputReader();
     }
 
     public String getHiddenWord(){
@@ -31,11 +33,56 @@ public class WordGuessingGame
         return numberOfTries;
     }
 
-    public void showGuessedWord() {
+    private void showGuessedWord() {
         System.out.println(guessedWord);
     }
 
-    
+    public void clear() {
+        System.out.print('\u000C');
+    }
+
+    public void play(){
+        clear();
+        showWelcome();
+        
+        for(int i = 0; i < hiddenWord.length(); i++) {
+            this.guessedWord += "_";
+        }
+            while(!guessedWord.equalsIgnoreCase(hiddenWord)){
+                if(guess()){
+                    System.out.println(guessedWord);
+                    numberOfTries += 1;
+                } else {
+                    System.out.println("A letra que digitou está errada");
+                    numberOfTries += 1;
+                }   
+            }  
+        showResult(); 
+    }
+
+    private void showWelcome(){
+        System.out.println(".----------------------------.");
+        System.out.println("| Bem vindo ao jogo da forca |");
+        System.out.println("'----------------------------'");
+        System.out.println("");
+    }
+
+    private boolean guess() {
+        char letter = reader.getChar("Escolha uma letra: ");
+        if (hiddenWord.indexOf(letter) != -1){
+            int index = hiddenWord.indexOf(letter);
+            guessedWord = guessedWord.substring(0, index)
+            + letter + guessedWord.substring(index + 1);
+            return true;
+        }
+        return false;      
+    }
+
+    public void showResult() {
+        System.out.println("Adivinhado!");
+        System.out.println("A palavra era: " + hiddenWord);
+        System.out.println("Tentativas: " + numberOfTries);
+    }
 }
 
 
