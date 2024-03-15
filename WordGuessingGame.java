@@ -48,13 +48,12 @@ public class WordGuessingGame
             this.guessedWord += "_";
         }
             while(!guessedWord.equalsIgnoreCase(hiddenWord)){
-                if(guess()){
-                    System.out.println(guessedWord);
-                    numberOfTries += 1;
-                } else {
-                    System.out.println("A letra que digitou está errada");
-                    numberOfTries += 1;
-                }   
+                System.out.println("");
+                System.out.println(guessedWord);
+                char letter = reader.getChar("Escolha uma letra: ");
+                guess(letter);
+                System.out.println();
+                numberOfTries += 1; 
             }  
         showResult(); 
     }
@@ -65,16 +64,21 @@ public class WordGuessingGame
         System.out.println("'----------------------------'");
         System.out.println("");
     }
+    
+    private void guess(char letter){
+        char[] hiddenArray = hiddenWord.toCharArray();
+        char[] guessedArray = guessedWord.toCharArray();
 
-    private boolean guess() {
-        char letter = reader.getChar("Escolha uma letra: ");
-        if (hiddenWord.indexOf(letter) != -1){
-            int index = hiddenWord.indexOf(letter);
-            guessedWord = guessedWord.substring(0, index)
-            + letter + guessedWord.substring(index + 1);
-            return true;
+        for(int i = 0; i < hiddenArray.length; i++){
+            if(hiddenArray[i] == letter){
+                guessedArray[i] = hiddenArray[i];
+            }
         }
-        return false;
+        guessedWord = new String(guessedArray);
+
+        if(hiddenWord.indexOf(letter) == -1) {
+            System.out.println("A letra " + letter + " não pertence à palavra.");
+        }
     }
 
     public void showResult() {
