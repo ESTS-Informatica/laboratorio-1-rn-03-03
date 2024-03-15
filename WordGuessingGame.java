@@ -1,6 +1,7 @@
 
 /**
- * Escreva uma descrição da classe WordGuessingGame aqui.
+ * Classe principal do jogo.
+ * Contém o funcionamento do jogo.
  * 
  * @author (Duarte Jacinto)
  * @author (Tiago Reis) 
@@ -89,6 +90,12 @@ public class WordGuessingGame
         System.out.println("Adivinhado!");
         System.out.println("A palavra era: " + hiddenWord);
         System.out.println("Tentativas: " + numberOfTries);
+    }
+
+    public void reset() {
+        this.hiddenWord = wordGenerator.generateWord();
+        this.guessedWord = "";
+        this.numberOfTries = 0;
     }
 }
 

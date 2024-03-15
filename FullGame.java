@@ -2,32 +2,31 @@
 /**
  * Escreva uma descrição da classe FullGame aqui.
  * 
- * @author (seu nome) 
- * @version (um número da versão ou uma data)
+ * @author (Duarte Jacinto)
+ * @author (Tiago Reis) 
+ * @version (15-03-2024)
  */
+
 public class FullGame
 {
-    // variáveis de instância - substitua o exemplo abaixo pelo seu próprio
-    private int x;
+    private WordGuessingGame wordGuessingGame;
+    private InputReader inputReader;
 
-    /**
-     * Construtor para objetos da classe FullGame
-     */
-    public FullGame()
-    {
-        // inicializa variáveis de instância
-        x = 0;
+    public FullGame() {
+        wordGuessingGame = new WordGuessingGame();
+        inputReader = new InputReader();
     }
 
-    /**
-     * Um exemplo de um método - substitua este comentário pelo seu próprio
-     * 
-     * @param  y   um exemplo de um parâmetro de método
-     * @return     a soma de x e y 
-     */
-    public int sampleMethod(int y)
-    {
-        // escreva seu código aqui
-        return x + y;
+    public void play() {
+        char choice = 'a';
+        while (choice != 'n') {
+            wordGuessingGame.play();
+            System.out.println("| Deseja jogar novamente?");
+            System.out.println("| 's' => Sim");
+            System.out.println("| 'n' => Não");
+            choice = inputReader.getChar(null);
+            wordGuessingGame.reset();
+        }
+        System.out.println("O jogo terminou...");
     }
 }

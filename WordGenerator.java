@@ -2,8 +2,9 @@
 /**
  * Escreva uma descrição da classe WordGenerator aqui.
  * 
- * @author (seu nome) 
- * @version (um número da versão ou uma data)
+ * @author (Duarte Jacinto)
+ * @author (Tiago Reis) 
+ * @version (15-03-2024)
  */
 
 import java.util.ArrayList;
