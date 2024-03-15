@@ -15,9 +15,13 @@ public class WordGuessingGame
     private String guessedWord;
     private int numberOfTries;
     private InputReader reader;
+    private WordGenerator wordGenerator;
 
-    public WordGuessingGame(String hiddenWord) {
-        this.hiddenWord = hiddenWord;
+    //public WordGuessingGame(String hiddenWord) { <- Antes do nivel 4
+    public WordGuessingGame() {
+        //this.hiddenWord = hiddenWord; <- Antes do nivel 4
+        wordGenerator = new WordGenerator();
+        this.hiddenWord = wordGenerator.generateWord();
         this.guessedWord = "";
         this.numberOfTries = 0;
         this.reader = new InputReader();

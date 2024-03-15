@@ -5,8 +5,10 @@
  * @author (seu nome) 
  * @version (um número da versão ou uma data)
  */
+
 import java.util.ArrayList;
 import java.util.Random;
+
 public class WordGenerator
 {
    private ArrayList<String> words;
@@ -36,6 +38,7 @@ private void  fillArrayList(){
 }
 
 public String generateWord(){
+    fillArrayList();
     String word;
     int random = new Random().nextInt(words.size());
     word = this.words.get(random);
