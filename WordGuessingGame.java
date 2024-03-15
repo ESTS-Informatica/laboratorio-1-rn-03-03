@@ -6,6 +6,9 @@
  * @author (Tiago Reis) 
  * @version (15-03-2024)
  */
+
+import java.util.Arrays;
+
 public class WordGuessingGame
 {
     private String hiddenWord;
@@ -37,12 +40,8 @@ public class WordGuessingGame
         System.out.println(guessedWord);
     }
 
-    public void clear() {
-        System.out.print('\u000C');
-    }
-
     public void play(){
-        clear();
+        System.out.print('\u000C');
         showWelcome();
         
         for(int i = 0; i < hiddenWord.length(); i++) {
@@ -75,7 +74,7 @@ public class WordGuessingGame
             + letter + guessedWord.substring(index + 1);
             return true;
         }
-        return false;      
+        return false;
     }
 
     public void showResult() {
